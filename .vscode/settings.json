@@ -10,6 +10,7 @@
   "editor.wordWrapColumn": 120,
 
   "files.associations": {
+    "*.css": "tailwindcss",
     "*.env.development": "env",
     "*.env.local": "env",
     "*.env.production": "env",
