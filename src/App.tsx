@@ -1,9 +1,9 @@
-import Home from './pages/Home/Home';
+import AppRouterProvider from './contexts/Router/RouterContext';
 
 function App() {
   return (
     <>
-      <Home />
+      <AppRouterProvider />
     </>
   );
 }
