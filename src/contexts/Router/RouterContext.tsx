@@ -5,6 +5,7 @@ import Additionals from '@/pages/Additionals/Additionals';
 
 import { ROUTES } from './routes';
 import MainLayout from '@/layouts/MainLayout';
+import Summary from '@/pages/Summary/Summary';
 
 const AppRouterProvider = () => {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const AppRouterProvider = () => {
         {
           path: ROUTES.CUSTOMIZATION,
           element: <Additionals />,
+        },
+        {
+          path: ROUTES.SUMMARY,
+          element: <Summary />,
         },
       ],
     },

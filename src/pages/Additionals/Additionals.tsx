@@ -59,7 +59,7 @@ function Additionals() {
       </div>
 
       <div className="flex justify-center">
-        <Button onClick={() => console.log(order)}>{'Próximo passo'}</Button>
+        <Button onClick={() => navigate(ROUTES.SUMMARY)}>{'Próximo passo'}</Button>
       </div>
     </div>
   );
