@@ -12,8 +12,8 @@ function Home() {
       <Header title={'Tamanho da pizza'} description={'Escolha o tamanho da sua pizza'} />
 
       <div className={'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'}>
-        {PIZZA_OPTIONS.map((pizza) => (
-          <Card>
+        {PIZZA_OPTIONS.map((pizza, index) => (
+          <Card key={index}>
             <div className="align-center flex w-full flex-col items-center justify-center gap-4 md:flex-col">
               <img src={pizza.image_url} alt={pizza.name} className="w-full md:w-[200px]" />
 
