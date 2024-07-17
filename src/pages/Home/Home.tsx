@@ -9,22 +9,20 @@ function Home() {
 
       <h2>Selecione um tamanho de pizza</h2>
 
-      {PIZZA_SIZES.map((pizza) => (
-        <Card>
-          <div className="align-center flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-            <img
-              src="https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg"
-              alt="Pequena"
-              className="w-full md:w-[200px]"
-            />
-            <span className={'text-xl font-bold'}>{pizza.size}</span>
-            <span className={'text-xl font-bold text-orange-500'}>
-              {pizza.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-            </span>
-            <Button>{'Selecionar'}</Button>
-          </div>
-        </Card>
-      ))}
+      <div className={'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'}>
+        {PIZZA_OPTIONS.map((pizza) => (
+          <Card>
+            <div className="align-center flex w-full flex-col items-center justify-center gap-4 md:flex-col">
+              <img src={pizza.image_url} alt={pizza.name} className="w-full md:w-[200px]" />
+              <span className={'text-xl font-bold'}>{pizza.name}</span>
+              <span className={'text-2xl font-bold text-orange-500'}>
+                {pizza.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+              </span>
+              <Button>{'Selecionar'}</Button>
+            </div>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
@@ -33,8 +31,23 @@ export default Home;
 
 // MOCK
 
-const PIZZA_SIZES = [
-  { size: 'Pequena', price: 20.2 },
-  { size: 'Média', price: 30.3 },
-  { size: 'Grande', price: 40 },
+const PIZZA_OPTIONS = [
+  {
+    name: 'Pequena',
+    price: 20.2,
+    time: 15,
+    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+  },
+  {
+    name: 'Média',
+    price: 30.3,
+    time: 20,
+    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+  },
+  {
+    name: 'Grande',
+    price: 40,
+    time: 25,
+    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+  },
 ];
