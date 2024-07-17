@@ -74,8 +74,8 @@ function Summary() {
               <span>{pizza.flavor?.name}</span>
               <div className={'flex flex-col'}>
                 {pizza.additionals && pizza.additionals?.length > 0
-                  ? pizza.additionals?.map((additional) => (
-                      <span>
+                  ? pizza.additionals?.map((additional, index) => (
+                      <span key={index}>
                         {additional.name}
                         {additional.price > 0 &&
                           ` (${additional.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })})`}

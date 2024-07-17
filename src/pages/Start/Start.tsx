@@ -129,20 +129,21 @@ const PIZZA_FLAVORS_OPTIONS = [
     name: 'Calabresa',
     price: 0,
     time: 0,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+    image_url: 'https://cdn0.tudoreceitas.com/pt/posts/9/8/3/pizza_calabresa_e_mussarela_4389_600_square.jpg',
   },
   {
     id: 2,
     name: 'Marguerita',
     price: 0,
     time: 0,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+    image_url:
+      'https://meeupedido.nyc3.cdn.digitaloceanspaces.com/estabelecimento/172/produtos/20230114280901239ije1e3dka.png',
   },
   {
     id: 3,
     name: 'Portuguesa',
     price: 0,
     time: 5,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+    image_url: 'https://pizza.modelos.sitedeempresas.com.br/wp-content/uploads/2023/06/pizza-foto-2.jpg',
   },
 ];

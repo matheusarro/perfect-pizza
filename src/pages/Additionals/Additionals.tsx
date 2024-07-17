@@ -79,20 +79,21 @@ const PIZZA_ADDITIONALS_OPTIONS = [
     name: 'Extra Bacon',
     price: 3,
     time: 0,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+    image_url: 'https://heygrillhey.com/wp-content/uploads/2019/01/Smoked-Candied-Bacon-Feature.png',
   },
   {
     id: 2,
     name: 'Sem cebola',
     price: 0,
     time: 0,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+    image_url:
+      'https://thumbs.dreamstime.com/b/pare-cebola-o-cheiro-agudo-%C3%A9-proibido-sinal-proibitivo-vermelho-95302030.jpg',
   },
   {
     id: 3,
     name: 'Borda Recheada',
     price: 5,
     time: 5,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
+    image_url: 'https://querouai.com.br/gestao/img/produtos/42_3196_20230219235915.jpeg',
   },
 ];
