@@ -79,7 +79,7 @@ const PIZZA_ADDITIONALS_OPTIONS = [
     name: 'Extra Bacon',
     price: 3,
     time: 0,
-    image_url: 'https://heygrillhey.com/wp-content/uploads/2019/01/Smoked-Candied-Bacon-Feature.png',
+    image_url: 'https://gardentogriddle.com/wp-content/uploads/2022/01/crispy-bacon-convection-oven.jpg',
   },
   {
     id: 2,
