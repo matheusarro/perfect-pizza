@@ -29,7 +29,7 @@ type OrderContextType = {
   order: Pizza[];
   changeSize: (itemID: number, size: PizzaSize) => void;
   changeFlavor: (itemID: number, size: PizzaFlavor) => void;
-  changeAdditionals: (itemID: number, additionals: PizzaAdditional[]) => void;
+  changeAdditionals: (itemID: number, additionals: PizzaAdditional) => void;
 };
 
 export const OrderContext = createContext<OrderContextType>({} as OrderContextType);
@@ -78,7 +78,7 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const changeAdditionals = (itemID: number, additionals: PizzaAdditional[]) => {
+  const changeAdditionals = (itemID: number, additional: PizzaAdditional) => {
     const pizzaToChange: Pizza | undefined = order.find((order) => order.itemID === itemID);
 
     if (!pizzaToChange) return;
@@ -86,11 +86,26 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
     const unchangedPizzas: Pizza[] = order.filter((order) => order.itemID !== itemID);
 
     if (unchangedPizzas && pizzaToChange) {
-      setOrder([...unchangedPizzas, { ...pizzaToChange, additionals: additionals }]);
+      const additionals = pizzaToChange.additionals;
+
+      if (additionals?.find(({ name }) => name === additional.name)) {
+        setOrder([
+          ...unchangedPizzas,
+          { ...pizzaToChange, additionals: additionals.filter(({ name }) => name !== additional.name) },
+        ]);
+      } else {
+        setOrder([...unchangedPizzas, { ...pizzaToChange, additionals: [...(additionals || []), additional] }]);
+      }
     }
 
     if (!unchangedPizzas && pizzaToChange) {
-      setOrder([{ ...pizzaToChange, additionals: additionals }]);
+      const additionals = pizzaToChange.additionals;
+
+      if (additionals?.find(({ name }) => name === additional.name)) {
+        setOrder([{ ...pizzaToChange, additionals: additionals.filter(({ name }) => name !== additional.name) }]);
+      } else {
+        setOrder([{ ...pizzaToChange, additionals: [...(additionals || []), additional] }]);
+      }
     }
   };
 
