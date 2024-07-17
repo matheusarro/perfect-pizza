@@ -1,8 +1,12 @@
 import Button from '@/components/Button/Button';
 import Card from '@/components/Card/Card';
 import Header from '@/components/Header/Header';
+import { useOrderContext } from '@/contexts/Order/OrderContext';
 
 function Home() {
+  const { order } = useOrderContext();
+  console.log(order);
+
   return (
     <div className={'flex h-full w-full flex-col gap-4 md:gap-6'}>
       <Header title={'Tamanho da pizza'} description={'Escolha o tamanho da sua pizza'} />
