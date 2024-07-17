@@ -68,7 +68,9 @@ function Summary() {
 
           {order.map((pizza) => (
             <Fragment key={pizza.itemID}>
-              <span>{pizza.size?.name}</span>
+              <span>
+                {`${pizza.size?.name} (${pizza.size?.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })})`}
+              </span>
               <span>{pizza.flavor?.name}</span>
               <div className={'flex flex-col'}>
                 {pizza.additionals && pizza.additionals?.length > 0
@@ -76,7 +78,7 @@ function Summary() {
                       <span>
                         {additional.name}
                         {additional.price > 0 &&
-                          ` + ${additional.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
+                          ` (${additional.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })})`}
                       </span>
                     ))
                   : '-'}
@@ -97,7 +99,7 @@ function Summary() {
         </div>
       </div>
 
-      <div className="flex flex-row justify-center gap-4">
+      <div className="flex flex-col justify-center gap-4 md:flex-row">
         <Button variant="tertiary" onClick={() => handleNewPizza()}>
           {'Adicionar pizza'}
         </Button>

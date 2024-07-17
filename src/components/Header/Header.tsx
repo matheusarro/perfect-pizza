@@ -14,7 +14,7 @@ const Header = ({ title, description, showBackButton = false, onBackButtonClick 
   };
 
   return (
-    <div className="flex flex-row items-center gap-4 px-2">
+    <div className="flex flex-row items-center gap-4 md:px-2">
       {showBackButton && (
         <IconButton onClick={() => handleGoBack()}>
           <ArrowLeftIcon className="size-6" />
