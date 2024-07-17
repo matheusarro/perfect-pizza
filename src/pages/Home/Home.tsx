@@ -29,7 +29,7 @@ function Home() {
   };
 
   const handleNextStep = () => {
-    navigate(ROUTES.ADDITIONALS);
+    navigate(ROUTES.CUSTOMIZATION);
   };
 
   const disabledNextButton =
