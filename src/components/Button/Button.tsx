@@ -9,7 +9,7 @@ interface ButtonProps {
 }
 
 const Button = ({ children, onClick, icon, variant = 'primary', fullWidth = false }: ButtonProps) => {
-  const buttonWidth: string = fullWidth ? 'w-full' : 'w-fit';
+  const buttonWidth: string = fullWidth ? 'md:w-full' : 'md:w-fit';
 
   const primaryColorClasses = `bg-orange-500 text-white hover:bg-orange-400`;
   const secondaryColorClasses = `bg-white text-black hover:bg-gray-50`;
@@ -23,7 +23,7 @@ const Button = ({ children, onClick, icon, variant = 'primary', fullWidth = fals
 
   return (
     <button
-      className={`flex items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50 ${buttonWidth} ${buttonVariants[variant]}`}
+      className={`flex w-full items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50 ${buttonWidth} ${buttonVariants[variant]}`}
       onClick={onClick}
     >
       {icon && icon}
