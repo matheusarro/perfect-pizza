@@ -4,10 +4,11 @@ import IconButton from '../IconButton/IconButton';
 
 interface HeaderProps {
   title: string;
+  description?: string;
   showBackButton?: boolean;
 }
 
-const Header = ({ title, showBackButton = false }: HeaderProps) => {
+const Header = ({ title, description, showBackButton = false }: HeaderProps) => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -15,13 +16,16 @@ const Header = ({ title, showBackButton = false }: HeaderProps) => {
   };
 
   return (
-    <div className="flex flex-row items-center gap-4">
+    <div className="flex flex-row items-center gap-4 px-2">
       {showBackButton && (
         <IconButton onClick={handleGoBack}>
           <ArrowLeftIcon className="size-6" />
         </IconButton>
       )}
-      <h1 className="text-2xl font-bold">{title}</h1>
+      <div className="flex flex-col gap-2">
+        <h1 className="text-2xl font-bold">{title}</h1>
+        <p>{description}</p>
+      </div>
     </div>
   );
 };
