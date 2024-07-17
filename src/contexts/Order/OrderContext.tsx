@@ -18,49 +18,80 @@ export type PizzaAdditional = {
   time: number;
 };
 
-export type OrderState = {
+export type Pizza = {
+  itemID: number;
   size: PizzaSize | null;
   flavor: PizzaFlavor | null;
   additionals: PizzaAdditional[] | null;
 };
 
 type OrderContextType = {
-  order: OrderState;
-  changeSize: (size: PizzaSize) => void;
-  changeFlavor: (size: PizzaFlavor) => void;
-  changeAdditionals: (additionals: PizzaAdditional[]) => void;
+  order: Pizza[];
+  changeSize: (itemID: number, size: PizzaSize) => void;
+  changeFlavor: (itemID: number, size: PizzaFlavor) => void;
+  changeAdditionals: (itemID: number, additionals: PizzaAdditional[]) => void;
 };
 
 export const OrderContext = createContext<OrderContextType>({} as OrderContextType);
 
-const initialOrderState: OrderState = {
-  size: null,
-  flavor: null,
-  additionals: null,
-};
+const initialOrderState: Pizza[] = [
+  {
+    itemID: 1,
+    size: null,
+    flavor: null,
+    additionals: null,
+  },
+];
 
 export const OrderProvider = ({ children }: { children: ReactNode }) => {
-  const [order, setOrder] = useState<OrderState>(initialOrderState);
+  const [order, setOrder] = useState<Pizza[]>(initialOrderState);
 
-  const changeSize = (size: PizzaSize) => {
-    setOrder((prev) => ({
-      ...prev,
-      size: size,
-    }));
+  const changeSize = (itemID: number, size: PizzaSize) => {
+    const pizzaToChange: Pizza | undefined = order.find((order) => order.itemID === itemID);
+
+    if (!pizzaToChange) return;
+
+    const unchangedPizzas: Pizza[] = order.filter((order) => order.itemID !== itemID);
+
+    if (unchangedPizzas && pizzaToChange) {
+      setOrder([...unchangedPizzas, { ...pizzaToChange, size: size }]);
+    }
+
+    if (!unchangedPizzas && pizzaToChange) {
+      setOrder([{ ...pizzaToChange, size: size }]);
+    }
   };
 
-  const changeFlavor = (size: PizzaFlavor) => {
-    setOrder((prev) => ({
-      ...prev,
-      size: size,
-    }));
+  const changeFlavor = (itemID: number, flavor: PizzaFlavor) => {
+    const pizzaToChange: Pizza | undefined = order.find((order) => order.itemID === itemID);
+
+    if (!pizzaToChange) return;
+
+    const unchangedPizzas: Pizza[] = order.filter((order) => order.itemID !== itemID);
+
+    if (unchangedPizzas && pizzaToChange) {
+      setOrder([...unchangedPizzas, { ...pizzaToChange, flavor: flavor }]);
+    }
+
+    if (!unchangedPizzas && pizzaToChange) {
+      setOrder([{ ...pizzaToChange, flavor: flavor }]);
+    }
   };
 
-  const changeAdditionals = (additionals: PizzaAdditional[]) => {
-    setOrder((prev) => ({
-      ...prev,
-      additionals: additionals,
-    }));
+  const changeAdditionals = (itemID: number, additionals: PizzaAdditional[]) => {
+    const pizzaToChange: Pizza | undefined = order.find((order) => order.itemID === itemID);
+
+    if (!pizzaToChange) return;
+
+    const unchangedPizzas: Pizza[] = order.filter((order) => order.itemID !== itemID);
+
+    if (unchangedPizzas && pizzaToChange) {
+      setOrder([...unchangedPizzas, { ...pizzaToChange, additionals: additionals }]);
+    }
+
+    if (!unchangedPizzas && pizzaToChange) {
+      setOrder([{ ...pizzaToChange, additionals: additionals }]);
+    }
   };
 
   return (
