@@ -10,11 +10,19 @@ function Home() {
   };
 
   return (
-    <div className={'flex h-full w-full flex-col gap-8 md:gap-12'}>
-      <div>
-        <p className={'text-lg font-bold'}>{'Bem-vindo ao Pizza Perfeita!'}</p>
-        <p className={'text-lg font-bold'}>{'Peça pizzas únicas e totalmente do seu jeito'}</p>
+    <div className={'flex h-full w-full flex-col items-center gap-8 md:gap-12'}>
+      <div className={'flex h-full flex-col items-center gap-4'}>
+        <p className={'text-2xl font-bold'}>
+          Bem-vindo ao <span className={'text-orange-500'}>Pizza Perfeita</span>!
+        </p>
+        <p className={'text-lg italic'}>{'Peça pizzas únicas e totalmente do seu jeito'}</p>
       </div>
+
+      <img
+        src={'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg'}
+        alt={'Pizza Perfeita'}
+        className="w-full md:w-3/4 lg:w-[400px]"
+      />
 
       <div className="flex justify-center">
         <Button onClick={() => handleStartOrder()}>{'Começar pedido'}</Button>
