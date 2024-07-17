@@ -5,7 +5,7 @@ import { useOrderContext } from '@/contexts/Order/OrderContext';
 
 function Home() {
   const { order, changeSize, changeFlavor } = useOrderContext();
-  console.log(order);
+  // console.log(order);
 
   const ID = 1;
 
@@ -35,8 +35,6 @@ function Home() {
           {PIZZA_SIZE_OPTIONS.map((size, index) => (
             <Card key={index} selected={order.find(({ itemID }) => itemID === ID)?.size?.name === size.name}>
               <div className="align-center flex w-full flex-col items-center justify-center gap-4 md:flex-col">
-                {/* <img src={size.image_url} alt={size.name} className="w-full md:w-[200px]" /> */}
-
                 <div className={'flex flex-row items-baseline gap-2'}>
                   <span className={'text-xl font-bold'}>{size.name}</span>
                   <span className={'text-gray-500'}>{`${size.time} min`}</span>
@@ -46,7 +44,9 @@ function Home() {
                   {size.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </span>
 
-                <Button onClick={() => handleSizeSelection(size)}>{'Selecionar'}</Button>
+                <Button variant={'tertiary'} onClick={() => handleSizeSelection(size)}>
+                  {'Selecionar'}
+                </Button>
               </div>
             </Card>
           ))}
@@ -71,11 +71,19 @@ function Home() {
                   )}
                 </div>
 
-                <Button onClick={() => handleFlavorSelection(flavor)}>{'Selecionar'}</Button>
+                <Button variant={'tertiary'} onClick={() => handleFlavorSelection(flavor)}>
+                  {'Selecionar'}
+                </Button>
               </div>
             </Card>
           ))}
         </div>
+      </div>
+
+      <div className="flex justify-center">
+        <Button disabled={true} onClick={() => console.log(order)}>
+          {'Próximo passo'}
+        </Button>
       </div>
     </div>
   );
@@ -91,21 +99,18 @@ const PIZZA_SIZE_OPTIONS = [
     name: 'Pequena',
     price: 20.2,
     time: 15,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
   },
   {
     id: 2,
     name: 'Média',
     price: 30.3,
     time: 20,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
   },
   {
     id: 3,
     name: 'Grande',
     price: 40,
     time: 25,
-    image_url: 'https://img.freepik.com/fotos-premium/uma-pizza-com-calabresa-e-cortada-em-oito-fatias_1010706-438.jpg',
   },
 ];
 
