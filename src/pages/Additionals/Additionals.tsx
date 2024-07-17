@@ -2,10 +2,12 @@ import Button from '@/components/Button/Button';
 import Card from '@/components/Card/Card';
 import Header from '@/components/Header/Header';
 import { useOrderContext } from '@/contexts/Order/OrderContext';
+import { ROUTES } from '@/contexts/Router/routes';
+import { useNavigate } from 'react-router-dom';
 
 function Additionals() {
   const { order, changeAdditionals } = useOrderContext();
-  // console.log(order);
+  const navigate = useNavigate();
 
   const ID = 1;
 
@@ -22,7 +24,12 @@ function Additionals() {
 
   return (
     <div className={'flex h-full w-full flex-col gap-8 md:gap-12'}>
-      <Header title={'Personalizando sua pizza'} description={'Escolha os adicionais que desejar para sua pizza'} />
+      <Header
+        title={'Personalizando sua pizza'}
+        description={'Escolha os adicionais que desejar para sua pizza'}
+        showBackButton
+        onBackButtonClick={() => navigate(ROUTES.HOME)}
+      />
 
       <div>
         <span className={'text-lg font-bold'}>{'Adicionais'}</span>

@@ -1,24 +1,22 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { useNavigate } from 'react-router-dom';
 import IconButton from '../IconButton/IconButton';
 
 interface HeaderProps {
   title: string;
   description?: string;
   showBackButton?: boolean;
+  onBackButtonClick?: () => void;
 }
 
-const Header = ({ title, description, showBackButton = false }: HeaderProps) => {
-  const navigate = useNavigate();
-
+const Header = ({ title, description, showBackButton = false, onBackButtonClick }: HeaderProps) => {
   const handleGoBack = () => {
-    navigate(-1);
+    onBackButtonClick && onBackButtonClick();
   };
 
   return (
     <div className="flex flex-row items-center gap-4 px-2">
       {showBackButton && (
-        <IconButton onClick={handleGoBack}>
+        <IconButton onClick={() => handleGoBack()}>
           <ArrowLeftIcon className="size-6" />
         </IconButton>
       )}

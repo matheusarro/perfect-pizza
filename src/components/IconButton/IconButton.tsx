@@ -6,7 +6,7 @@ type IconButtonProps = {
   onClick?: () => void;
 };
 
-function IconButton({ children, variant = 'secondary' }: IconButtonProps) {
+function IconButton({ children, variant = 'secondary', onClick }: IconButtonProps) {
   const primaryColorClasses = `bg-orange-500 text-white hover:bg-orange-400`;
   const secondaryColorClasses = `bg-white text-black hover:bg-gray-50`;
   const tertiaryColorClasses = `bg-yellow-500 text-black hover:bg-yellow-400`;
@@ -17,7 +17,11 @@ function IconButton({ children, variant = 'secondary' }: IconButtonProps) {
     tertiary: tertiaryColorClasses,
   };
 
-  return <button className={`rounded-full p-2 ${buttonVariants[variant]}`}>{children}</button>;
+  return (
+    <button onClick={onClick && onClick} className={`rounded-full p-2 ${buttonVariants[variant]}`}>
+      {children}
+    </button>
+  );
 }
 
 export default IconButton;
