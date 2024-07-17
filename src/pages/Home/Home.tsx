@@ -2,9 +2,12 @@ import Button from '@/components/Button/Button';
 import Card from '@/components/Card/Card';
 import Header from '@/components/Header/Header';
 import { useOrderContext } from '@/contexts/Order/OrderContext';
+import { ROUTES } from '@/contexts/Router/routes';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const { order, changeSize, changeFlavor } = useOrderContext();
+  const navigate = useNavigate();
   // console.log(order);
 
   const ID = 1;
@@ -24,6 +27,13 @@ function Home() {
       time: flavor.time,
     });
   };
+
+  const handleNextStep = () => {
+    navigate(ROUTES.ADDITIONALS);
+  };
+
+  const disabledNextButton =
+    !order.find(({ itemID }) => itemID === ID)?.size || !order.find(({ itemID }) => itemID === ID)?.flavor;
 
   return (
     <div className={'flex h-full w-full flex-col gap-8 md:gap-12'}>
@@ -81,7 +91,7 @@ function Home() {
       </div>
 
       <div className="flex justify-center">
-        <Button disabled={true} onClick={() => console.log(order)}>
+        <Button disabled={disabledNextButton} onClick={() => handleNextStep()}>
           {'Próximo passo'}
         </Button>
       </div>
