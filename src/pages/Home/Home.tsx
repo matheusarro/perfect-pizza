@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
   const { order, changeSize, changeFlavor } = useOrderContext();
   const navigate = useNavigate();
-  // console.log(order);
 
   const ID = 1;
 

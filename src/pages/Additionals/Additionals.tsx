@@ -28,7 +28,7 @@ function Additionals() {
         title={'Personalizando sua pizza'}
         description={'Escolha os adicionais que desejar para sua pizza'}
         showBackButton
-        onBackButtonClick={() => navigate(ROUTES.HOME)}
+        onBackButtonClick={() => navigate(-1)}
       />
 
       <div>
