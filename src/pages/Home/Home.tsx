@@ -5,19 +5,23 @@ import Header from '@/components/Header/Header';
 function Home() {
   return (
     <div className={'flex h-full w-full flex-col gap-4 md:gap-6'}>
-      <Header title={'Montar pizza'} />
-
-      <h2>Selecione um tamanho de pizza</h2>
+      <Header title={'Tamanho da pizza'} description={'Escolha o tamanho da sua pizza'} />
 
       <div className={'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'}>
         {PIZZA_OPTIONS.map((pizza) => (
           <Card>
             <div className="align-center flex w-full flex-col items-center justify-center gap-4 md:flex-col">
               <img src={pizza.image_url} alt={pizza.name} className="w-full md:w-[200px]" />
-              <span className={'text-xl font-bold'}>{pizza.name}</span>
+
+              <div className={'flex flex-row items-baseline gap-2'}>
+                <span className={'text-xl font-bold'}>{pizza.name}</span>
+                <span className={'text-gray-500'}>{`${pizza.time} min`}</span>
+              </div>
+
               <span className={'text-2xl font-bold text-orange-500'}>
                 {pizza.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
               </span>
+
               <Button>{'Selecionar'}</Button>
             </div>
           </Card>
