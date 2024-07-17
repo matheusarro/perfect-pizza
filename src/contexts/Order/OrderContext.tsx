@@ -30,6 +30,7 @@ type OrderContextType = {
   changeSize: (itemID: number, size: PizzaSize) => void;
   changeFlavor: (itemID: number, size: PizzaFlavor) => void;
   changeAdditionals: (itemID: number, additionals: PizzaAdditional) => void;
+  addNewPizza: () => void;
 };
 
 export const OrderContext = createContext<OrderContextType>({} as OrderContextType);
@@ -109,8 +110,12 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const addNewPizza = () => {
+    setOrder([...order, { itemID: order.length + 1, size: null, flavor: null, additionals: null }]);
+  };
+
   return (
-    <OrderContext.Provider value={{ order, changeSize, changeFlavor, changeAdditionals }}>
+    <OrderContext.Provider value={{ order, changeSize, changeFlavor, changeAdditionals, addNewPizza }}>
       {children}
     </OrderContext.Provider>
   );

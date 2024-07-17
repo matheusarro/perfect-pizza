@@ -3,13 +3,13 @@ import Card from '@/components/Card/Card';
 import Header from '@/components/Header/Header';
 import { useOrderContext } from '@/contexts/Order/OrderContext';
 import { ROUTES } from '@/contexts/Router/routes';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Additionals() {
   const { order, changeAdditionals } = useOrderContext();
   const navigate = useNavigate();
-
-  const ID = 1;
+  const { id } = useParams();
+  const ID = parseInt(id as string);
 
   const handleAdditionalSelection = (flavor: any) => {
     changeAdditionals(ID, {
@@ -17,6 +17,10 @@ function Additionals() {
       price: flavor.price,
       time: flavor.time,
     });
+  };
+
+  const handleNextStep = () => {
+    navigate(ROUTES.SUMMARY);
   };
 
   const selectedAdditionals =
@@ -59,7 +63,7 @@ function Additionals() {
       </div>
 
       <div className="flex justify-center">
-        <Button onClick={() => navigate(ROUTES.SUMMARY)}>{'Próximo passo'}</Button>
+        <Button onClick={() => handleNextStep()}>{'Próximo passo'}</Button>
       </div>
     </div>
   );

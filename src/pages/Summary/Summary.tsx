@@ -1,13 +1,13 @@
 import Button from '@/components/Button/Button';
 import Header from '@/components/Header/Header';
 import { useOrderContext } from '@/contexts/Order/OrderContext';
+import { ROUTES } from '@/contexts/Router/routes';
 import { useNavigate } from 'react-router-dom';
+import { Fragment } from 'react/jsx-runtime';
 
 function Summary() {
-  const { order } = useOrderContext();
+  const { order, addNewPizza } = useOrderContext();
   const navigate = useNavigate();
-
-  const ID = 1;
 
   const handleNextStep = () => {
     alert('Conferir log');
@@ -15,8 +15,8 @@ function Summary() {
   };
 
   const handleNewPizza = () => {
-    alert('Conferir log');
-    console.log(order);
+    addNewPizza();
+    navigate(ROUTES.START.replace(':id', (order.length + 1).toString()));
   };
 
   const orderTotalPrice = () => {
@@ -67,7 +67,7 @@ function Summary() {
           <span className={'text-lg font-semibold italic'}>Personalizações</span>
 
           {order.map((pizza) => (
-            <>
+            <Fragment key={pizza.itemID}>
               <span>{pizza.size?.name}</span>
               <span>{pizza.flavor?.name}</span>
               <div className={'flex flex-col'}>
@@ -81,7 +81,7 @@ function Summary() {
                     ))
                   : '-'}
               </div>
-            </>
+            </Fragment>
           ))}
         </div>
       </div>

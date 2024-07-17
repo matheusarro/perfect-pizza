@@ -1,11 +1,12 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
-import Home from '@/pages/Home/Home';
 import Additionals from '@/pages/Additionals/Additionals';
 
 import { ROUTES } from './routes';
 import MainLayout from '@/layouts/MainLayout';
 import Summary from '@/pages/Summary/Summary';
+import Start from '@/pages/Start/Start';
+import Home from '@/pages/Home/Home';
 
 const AppRouterProvider = () => {
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const AppRouterProvider = () => {
         {
           path: ROUTES.HOME,
           element: <Home />,
+        },
+        {
+          path: ROUTES.START,
+          element: <Start />,
         },
         {
           path: ROUTES.CUSTOMIZATION,
